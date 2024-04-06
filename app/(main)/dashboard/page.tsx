@@ -8,7 +8,7 @@ const page = () => {
   }
   return (
     <div>
-      <h1 className="text-lgide">Welcome,Mr {user.firstName}</h1>
+      <h1 className="text-lg">Welcome,Mr {user.firstName}</h1>
     </div>
   );
 };

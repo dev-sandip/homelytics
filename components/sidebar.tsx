@@ -32,6 +32,11 @@ export const Sidebar = ({ className }: Props) => {
         </div>
       </Link>
       <div className="flex flex-col gap-y-2 flex-1">
+        <SidebarItem
+          label="Dashboard"
+          href="/dashboard"
+          Icon={<CandlestickChart />}
+        />
         <SidebarItem label="Rent" href="/rent" Icon={<CandlestickChart />} />
 
         <SidebarItem
