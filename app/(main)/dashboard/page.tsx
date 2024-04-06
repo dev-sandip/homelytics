@@ -1,5 +1,4 @@
 "use client";
-import { Header } from "@/components/Header";
 import { useUser } from "@clerk/nextjs";
 const page = () => {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -9,8 +8,7 @@ const page = () => {
   }
   return (
     <div>
-      <Header />
-      Welcome ,Mr.{user.firstName}
+      <h1 className="text-lgide">Welcome,Mr {user.firstName}</h1>
     </div>
   );
 };
