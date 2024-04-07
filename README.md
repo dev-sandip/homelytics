@@ -31,13 +31,13 @@ To get started with Homelytics, follow these steps:
 1. Clone the repository to your local machine:
 
    ```
-   git clone https://github.com/your-username/fms.git
+   git clone https://github.com/dev-sandip/homelytics.git
    ```
 
 2. Install dependencies:
 
    ```
-   cd fms
+   cd homelytics
    npm install
    ```
 
