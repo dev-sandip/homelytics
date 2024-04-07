@@ -74,5 +74,3 @@ This project is licensed under the [MIT License](LICENSE).
 - Authentication is powered by [Clerk](https://clerk.dev/).
 
 ---
-
-Feel free to customize this README further if needed!
