@@ -5,9 +5,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Flat Management System",
-  description:
-    "Flat Management System is designed to streamline various aspects of managing a flat, making it easier for a small group of four people to handle tasks such as financial management, household chores, and more.",
+  title: "Homelytics",
+  description: "Where Home Management Meets Efficiency",
 };
 
 export default function RootLayout({

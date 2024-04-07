@@ -28,8 +28,7 @@ export default function Home() {
           className="relative flex flex-col gap-4 items-center justify-center px-4"
         >
           <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
-            Welcome to{" "}
-            <span className="text-pink-500">Flat Management System</span> 🚀!
+            Welcome to <span className="text-pink-500">Homelytics</span> 🚀!
           </div>
           <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
             Developed By (@git-sandip)

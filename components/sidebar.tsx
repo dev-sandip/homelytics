@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 
 import { SidebarItem } from "./sidebar-item";
+import Image from "next/image";
 
 type Props = {
   className?: string;
@@ -25,7 +26,7 @@ export const Sidebar = ({ className }: Props) => {
     >
       <Link href="/dashboard">
         <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
-          {/* <Image src="/icon.svg" height={40} width={40} alt="icon" /> */}
+          <Image src="/logo-black.svg" height={40} width={40} alt="icon" />
           <h1 className="text-2xl font-extrabold text-pink-600 tracking-wide">
             FMS
           </h1>

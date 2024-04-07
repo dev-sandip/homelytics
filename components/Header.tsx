@@ -8,14 +8,21 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export const Header = () => {
   return (
     <header className="h-20 w-full border-b-2  px-4">
       <div className="lg:max-w-screen-lg mx-auto flex items-center justify-between h-full">
         <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
+          <Image
+            src="/logo-black.svg"
+            height={40}
+            width={40}
+            alt="Homelytics"
+          />
           <h1 className="text-2xl font-extrabold text-pink-600 tracking-wide">
-            FMS
+            Homelytics
           </h1>
         </div>
         <ClerkLoading>

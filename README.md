@@ -1,4 +1,8 @@
-Welcome to the Flat Management System! This system is designed to streamline various aspects of managing a flat, making it easier for a small group of four people to handle tasks such as financial management, household chores, and more.
+# Homelytics
+
+Welcome to Homelytics! Where Home Management Meets Efficiency.
+
+Homelytics is a web application designed to streamline various aspects of managing your home, making it easier to handle tasks such as financial management, household chores, and more.
 
 ## Features
 
@@ -18,22 +22,22 @@ Welcome to the Flat Management System! This system is designed to streamline var
   - Schedule allotment for garbage disposal to designated collection points or vehicles.
 
 - **User Interface:**
-  - User-friendly interface for intuitive navigation and efficient management of the flat.
+  - User-friendly interface for intuitive navigation and efficient management of the home.
 
 ## Getting Started
 
-To get started with the Flat Management System, follow these steps:
+To get started with Homelytics, follow these steps:
 
 1. Clone the repository to your local machine:
 
    ```
-   git clone https://github.com/your-username/flat-management-system.git
+   git clone https://github.com/your-username/fms.git
    ```
 
 2. Install dependencies:
 
    ```
-   cd flat-management-system
+   cd fms
    npm install
    ```
 
@@ -49,7 +53,7 @@ To get started with the Flat Management System, follow these steps:
    ```
 
 5. Access the application:
-   - Open your browser and navigate to `http://localhost:3000` to access the Flat Management System.
+   - Open your browser and navigate to `http://localhost:3000` to access Homelytics.
 
 ## Contributing
 
@@ -66,9 +70,9 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
-- The Flat Management System was built using [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [Shadcn UI](https://shadcn-ui.com/).
+- Homelytics was built using [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [Shadcn UI](https://shadcn-ui.com/).
 - Authentication is powered by [Clerk](https://clerk.dev/).
 
 ---
 
-Feel free to customize this README file further based on your specific project details and requirements!
+Feel free to customize this README further if needed!
