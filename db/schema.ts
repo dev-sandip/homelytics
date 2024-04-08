@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, date, primaryKey } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, integer, date, primaryKey, boolean } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
 // Define the 'users' table
@@ -15,13 +15,17 @@ export const meterReadings = pgTable('meterReadings', {
     value: integer('value').notNull(),
 });
 
-// Define the 'loan' table
+
 export const loan = pgTable('loan', {
     id: serial('id').primaryKey(),
-    borrowerId: text('borrower_id').notNull().references(() => users.id, { onDelete: "cascade" }), // References the user who borrowed the loan
+    borrowerId: text('borrower_id').notNull().references(() => users.id, { onDelete: "cascade" }),
     amount: integer('amount').notNull(),
-    lenderId: text('lender_id').notNull().references(() => users.id, { onDelete: "cascade" }), // References the user who provided the loan
+    lenderId: text('lender_id').notNull().references(() => users.id, { onDelete: "cascade" }),
+    isPaid: boolean('is_paid').notNull().default(false),
+    isReceived: boolean('is_received').notNull().default(false),
+    date: date('date').notNull().defaultNow(),
 });
+
 
 // Define relationships for the 'meterReadings' table
 export const meterReadingsRelations = relations(meterReadings, ({ one }) => ({
@@ -30,14 +34,11 @@ export const meterReadingsRelations = relations(meterReadings, ({ one }) => ({
         references: [users.id],
     }),
 }));
-// Define relationships for the 'loan' table
-export const loanRelations = relations(loan, ({ one }) => ({
-    borrower: one(users, {
-        fields: [loan.borrowerId],
-        references: [users.id],
-    }),
-    lender: one(users, {
-        fields: [loan.lenderId],
-        references: [users.id],
-    }),
-}));
+
+export const schedule = pgTable('schedule', {
+    name: text('name').notNull(),
+    date: date('date').notNull(),
+    time: text('time').notNull(),
+    userId: text('user_id').notNull().references(() => users.id, { onDelete: "cascade" }),
+
+});
