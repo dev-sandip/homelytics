@@ -12,7 +12,19 @@ model Users {
   id             String   @id @default(uuid())
   username       String   @unique
   imageUrl       String   @db.Text
-  extrenalUserId String   @unique
+  externalUserId String   @unique
   created_at     DateTime @default(now())
   updated_at     DateTime @default(now())
+
+  defaultData DefaultData[]
+}
+
+model DefaultData {
+  id         String   @id @default(uuid())
+  RoomNumber Int      @unique @default(autoincrement())
+  RoomRent   Int
+  usersId    String
+  User       Users    @relation(fields: [usersId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }

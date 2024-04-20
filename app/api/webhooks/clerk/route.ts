@@ -42,12 +42,13 @@ export async function POST(req: Request) {
     }
 
     const eventType = evt.type;
+    console.log('Event type:', payload.data.private_metadata);
     if (eventType === 'user.created') {
         await db.users.create({
             data: {
-                extrenalUserId: payload.data.id,
                 username: payload.data.username,
                 imageUrl: payload.data.image_url,
+                externalUserId: payload.data.id,
             }
         })
     }
@@ -55,7 +56,7 @@ export async function POST(req: Request) {
     if (eventType === 'user.updated') {
         const currentUser = await db.users.findUnique({
             where: {
-                extrenalUserId: payload.data.id
+                externalUserId: payload.data.id
             }
         })
 
@@ -67,7 +68,7 @@ export async function POST(req: Request) {
 
         await db.users.update({
             where: {
-                extrenalUserId: payload.data.id
+                externalUserId: payload.data.id
             },
             data: {
                 username: payload.data.username,
@@ -79,7 +80,7 @@ export async function POST(req: Request) {
     if (eventType === 'user.deleted') {
         await db.users.delete({
             where: {
-                extrenalUserId: payload.data.id
+                externalUserId: payload.data.id
             }
         })
     }
