@@ -6,12 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "db:studio": "npx drizzle-kit studio",
-    "db:push": "npx drizzle-kit push:pg",
-    "db:seed": "tsx ./scripts/seed.ts",
-    "db:prod": "tsx ./scripts/prod.ts",
-    "db:reset": "tsx ./scripts/reset.ts"
+    "lint": "next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.12",
@@ -23,18 +18,16 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.30.7",
     "framer-motion": "^11.0.25",
     "lucide-react": "^0.365.0",
     "next": "14.1.4",
-    "pg": "^8.11.5",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.12.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
@@ -42,7 +35,9 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "postcss": "^8",
+    "prisma": "^5.12.1",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.4"
   }
 }
