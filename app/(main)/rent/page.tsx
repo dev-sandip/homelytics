@@ -20,18 +20,46 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { ArrowLeftIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { db } from "@/db/db";
+import { useAuth } from "@clerk/nextjs";
 
 const page = () => {
   const [roomRent, setRoomRent] = useState(3000);
   const [waterBill, setWaterBill] = useState(32.5);
   const [wifiBill, setWifiBill] = useState(367.2525);
   const [eBill, setEBill] = useState(0);
+  const [month, setMonth] = useState("");
   const [totalRent, setTotalRent] = useState(0);
+  const { userId } = useAuth();
 
   const calculateRent = () => {
     const monthlyRent = roomRent + waterBill + wifiBill + eBill;
     setTotalRent(monthlyRent);
+    console.log(month);
+    console.log(userId);
   };
+
+  const formatDate = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const uploadRent = async () => {
+    await db.rent.create({
+      data: {
+        RoomRent: roomRent,
+        ElectricityBill: eBill,
+        WaterBill: waterBill,
+        WifiBill: wifiBill,
+        TotalRent: totalRent,
+        Month: month,
+        usersId: userId as string,
+      },
+    });
+  };
+
   return (
     <div className="flex flex-col gap-4 p-4 lg:p-6">
       <div className="flex items-center gap-4">
@@ -108,26 +136,6 @@ const page = () => {
                 <TableCell>Rs 500.00</TableCell>
                 <TableCell>January payment</TableCell>
               </TableRow>
-              <TableRow>
-                <TableCell>2023-02-01</TableCell>
-                <TableCell>Rs 500.00</TableCell>
-                <TableCell>February payment</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>2023-03-01</TableCell>
-                <TableCell>Rs 500.00</TableCell>
-                <TableCell>March payment</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>2023-04-01</TableCell>
-                <TableCell>Rs 500.00</TableCell>
-                <TableCell>April payment</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>2023-05-01</TableCell>
-                <TableCell>Rs 500.00</TableCell>
-                <TableCell>May payment</TableCell>
-              </TableRow>
             </TableBody>
           </Table>
         </CardContent>
@@ -184,12 +192,31 @@ const page = () => {
                 value={eBill}
               />
             </div>
+            <div className="flex flex-col gap-1">
+              <Label className="text-sm" htmlFor="month">
+                Month
+              </Label>
+
+              <Input
+                id="month"
+                type="date"
+                onChange={(e) => setMonth(formatDate(new Date(e.target.value)))}
+              />
+            </div>
             <Button
               className="md:col-start-1"
               type="submit"
               onClick={calculateRent}
             >
               Calculate
+            </Button>
+            <Button
+              className="md:col-start-2"
+              variant={"destructive"}
+              type="submit"
+              onClick={uploadRent}
+            >
+              Save Rent
             </Button>
           </div>
           <div className="mt-4 prose">

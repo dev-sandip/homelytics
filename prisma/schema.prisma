@@ -17,6 +17,7 @@ model Users {
   updated_at     DateTime @default(now())
 
   defaultData DefaultData[]
+  rent        Rent[]
 }
 
 model DefaultData {
@@ -24,7 +25,21 @@ model DefaultData {
   RoomNumber Int      @unique @default(autoincrement())
   RoomRent   Int
   usersId    String
-  User       Users    @relation(fields: [usersId], references: [id])
+  User       Users    @relation(fields: [usersId], references: [externalUserId])
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
+}
+
+model Rent {
+  id              String   @id @default(uuid())
+  RoomRent        Int
+  ElectricityBill Int
+  WaterBill       Int
+  WifiBill        Int
+  Month           String
+  TotalRent       Int
+  usersId         String
+  User            Users    @relation(fields: [usersId], references: [externalUserId])
+  created_at      DateTime @default(now())
+  updated_at      DateTime @default(now())
 }
