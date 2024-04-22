@@ -22,6 +22,7 @@ import { ArrowLeftIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { db } from "@/db/db";
 import { useAuth } from "@clerk/nextjs";
+import { formatDate } from "@/lib/utils";
 
 const page = () => {
   const [roomRent, setRoomRent] = useState(3000);
@@ -37,13 +38,6 @@ const page = () => {
     setTotalRent(monthlyRent);
     console.log(month);
     console.log(userId);
-  };
-
-  const formatDate = (date: Date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
   };
 
   const uploadRent = async () => {
